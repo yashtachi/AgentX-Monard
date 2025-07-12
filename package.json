@@ -1,0 +1,48 @@
+{
+  "name": "agentx-monard",
+  "version": "1.0.0",
+  "description": "Decentralized framework for creating and managing on-chain AI agents",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy": "hardhat run scripts/deploy.js --network monard",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+    "executor": "node executor/index.js",
+    "monitor": "node monitor/index.js",
+    "api": "node api/server.js",
+    "cli": "node cli/agentx.js",
+    "dev": "concurrently \"npm run executor\" \"npm run api\"",
+    "dev:full": "concurrently \"npm run executor\" \"npm run api\" \"npm run monitor\"",
+    "frontend:install": "cd frontend && npm install",
+    "frontend:build": "cd frontend && npm run build",
+    "setup": "node scripts/setup.js && npm install && cp .env.example .env",
+    "clean": "rm -rf artifacts cache deployment.json logs",
+    "lint": "npx solhint contracts/**/*.sol"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yashtachi/AgentX-Monard.git"
+  },
+  "keywords": ["AI", "blockchain", "smart-contracts", "autonomous-agents", "web3", "monard"],
+  "author": "AgentX Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yashtachi/AgentX-Monard/issues"
+  },
+  "homepage": "https://github.com/yashtachi/AgentX-Monard#readme",
+  "dependencies": {
+    "ethers": "^6.8.0",
+    "openai": "^4.20.1",
+    "dotenv": "^16.3.1",
+    "axios": "^1.6.0",
+    "cron": "^3.1.6",
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.0.0",
+    "hardhat": "^2.25.0",
+    "concurrently": "^8.2.2"
+  }
+}
